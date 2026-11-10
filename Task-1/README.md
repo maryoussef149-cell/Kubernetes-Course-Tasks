@@ -68,10 +68,6 @@ command: ["sh", "-c", "echo 'init failed'; exit 1"]
 
 and re-applied the file with `kubectl apply -f deployment.yaml`.
 
-![New Pod Init:CrashLoopBackOff](screenshots/10-init-failed-pods.png)
-![Init logs](screenshots/11-init-failed-logs.png)
-![Describe: Exit Code 1](screenshots/12-describe-exit-code.png)
-
 ### Answers
 
 - **Which status does the new Pod show?** `Init:Error`, then `Init:CrashLoopBackOff`, with READY `0/2`.
@@ -81,8 +77,6 @@ and re-applied the file with `kubectl apply -f deployment.yaml`.
 ## Step 6: Fix
 
 I restored `command: ["sh", "-c", "echo done"]` and ran `kubectl apply -f deployment.yaml` again.
-
-![Fixed: 3/3](screenshots/13-fixed.png)
 
 ## Troubleshooting notes
 
