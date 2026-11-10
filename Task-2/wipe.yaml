@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: wipe
+  namespace: webapp-stack
+spec:
+  restartPolicy: Never
+  containers:
+    - name: wipe
+      image: busybox:1.36
+      command: ["sh", "-c", "ls -la /data; rm -rf /data/* /data/.[!.]* ; echo AFTER; ls -la /data"]
+      volumeMounts:
+        - name: d
+          mountPath: /data
+  volumes:
+    - name: d
+      persistentVolumeClaim:
+        claimName: mysql-pvc
