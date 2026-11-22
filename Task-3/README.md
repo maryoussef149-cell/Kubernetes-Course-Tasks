@@ -1,9 +1,6 @@
 # Task 3: MySQL Read Replicas, RBAC, NetworkPolicy & Helm
  
 ## 1. What I built
- # Task 3: MySQL Read Replicas, RBAC, NetworkPolicy & Helm
-
-## 1. What I built
 
 I upgraded the Task 2 stack:
 
