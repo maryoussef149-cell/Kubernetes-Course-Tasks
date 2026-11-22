@@ -1,0 +1,38 @@
+app:
+  replicaCount: 2
+  image:
+    repository: webapp-api
+    tag: task3
+  title: "hello in MLOPS MENA COMMUNITY"
+  env: dev
+
+mysqlWrite:
+  replicaCount: 1
+  image:
+    repository: webapp-mysql
+    tag: task3
+
+mysqlRead:
+  replicaCount: 2
+  image:
+    repository: webapp-mysql
+    tag: task3
+
+mysql:
+  database: webapp
+  port: "3306"
+  auth:
+    rootPassword: rootpass123
+    appUser: webapp
+    appPassword: webapp123
+    replicationUser: repl
+    replicationPassword: repl123
+
+storage:
+  nodeName: minikube-m02
+  hostPath: /data/webapp-mysql
+  storageClassName: manual
+  pv:
+    size: 2Gi
+  pvc:
+    size: 2Gi

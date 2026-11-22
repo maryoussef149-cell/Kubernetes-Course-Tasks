@@ -1,0 +1,5 @@
+Release {{ .Release.Name }} installed in namespace {{ .Release.Namespace }}.
+
+Check:   kubectl get pods -n {{ .Release.Namespace }}
+Open:    kubectl --context minikube port-forward -n ingress-nginx svc/ingress-nginx-controller 8080:80
+         then http://localhost:8080
