@@ -205,23 +205,3 @@ Key ideas:
 ### Check 15: Helm values
 
 ![Check 15](images/26.png)
-I upgraded the Task 2 stack:
- 
-- MySQL is now split into **`mysql-write`** (1 Pod, accepts writes) and **`mysql-read`** (2 Pods, read-only copies).
-- The read servers copy every change from the write server (**GTID replication**).
-- The app sends writes to `mysql-write` and reads to `mysql-read` (new ConfigMap keys `MYSQL_WRITE_HOST` and `MYSQL_READ_HOST`).
-- I deployed as a new user **`dev-user`** that has rights only in `webapp-stack` (**RBAC**).
-- A **NetworkPolicy** allows port 3306 only from the app and from MySQL Pods.
-- Everything is packaged in one **Helm chart** (`webapp-stack`) and installed as release `webapp`.
-## 2. Project structure
- 
-```
-Task-3/
-├── mysql/          # MySQL image 
-├── webapp/         # FastAPI image 
-├── rbac/rbac.yaml  # Role, RoleBinding, ClusterRole, ClusterRoleBinding
-├── scripts/        # create-user.sh, kubeconfig.sh
-├── webapp-stack/   # Helm chart (Chart.yaml, values.yaml, templates/)
-└── images/         # screenshots
-```
- 
